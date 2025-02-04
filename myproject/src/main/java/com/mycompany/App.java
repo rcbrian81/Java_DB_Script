@@ -1,5 +1,5 @@
 package com.mycompany;
-import java.sql.Connection;
+import java.util.Scanner;
 
 /**
  * Hello world!
@@ -9,10 +9,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        Connection connection = DBHelper.connect();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please CSV File Path:");
+        String path = scanner.nextLine().trim();
 
-        if(connection != null)
-            System.out.println("Connection to database was SUCCESSFUL!");
+        BatchProcessor.processFile(path);
+        scanner.close();
     }
 }
